@@ -1,0 +1,53 @@
+------------------------------------------------------------
+Follwing fields are missing in "HitQueryModel":
+
+Access Speed		 
+Browser		 
+Browser Category		 
+City		 
+Country		 
+Scheme - Domain - Port	
+HTTP Error 		 
+ISP		 
+Operating System		 
+Region 		 
+Response Contains Frameset Tag 		 
+Response Content 		 
+Response Content Type  		 
+Session ID  		 
+SOAP Fault (2)  		 
+
+------------------------------------------------------------
+Follwing fields are existing in "HitQueryModel":
+||"In Wiki Page"                || "In HitsQueryModel"          || "Type in HitsQueryModel"     
+|Back-End Time                 | encodedEndToEndTime          | String(OperatorAndNumeric)   
+|Client IP                     | ClientIP                     | String                       
+|Client Time                   | encodedClientTime            | String(OperatorAndNumeric)   
+|Content Category              | contentCategory              | String (Should be removed from MatchCondition? Because there is already a "Content Category:" dropdown list in "Simple/Expert Search dialog") 
+|Cookie                        | cookies                      | NameValuePairSetModel        
+|Custom Fields                 | customFieldUUIDsToReturn     | Set<String>                  
+|End-to-End Time               | encodedEndToEndTime          | String(OperatorAndNumeric)   
+|Exception                     | exception                    | String                       
+|Hit Status                    | status                       | Status                       
+|Is Instrumentation Hit        | hasInstrumentation           | Boolean                      
+|Metric Updates                | metricUpdates                | NameValuePairSetModel        
+|Server Port                   | encodedServerPort            | String(OperatorAndNumeric)   
+|Request Content Size          | encodedRequestContentSize    | String(OperatorAndNumeric)   
+|Request Field                 | requestFields                | NameValuePairSetModel        
+|Request Header                | requestHeaders               | NameValuePairSetModel        
+|Request Method                | requestMethod                | String                       
+|Request Path                  | requestPath                  | String                       
+|Request Total Bytes           | encodedRequestTotalBytes     | String(OperatorAndNumeric)   
+|Response Code                 | responseCode                 | Integer                      
+|Response Contains HTML Tag    | hasHtmlTag                   | Boolean                      
+|Response Content Size         | encodedResponseContentSize   | String(OperatorAndNumeric)   
+|Response Header               | responseHeaders              | NameValuePairSetModel        
+|Response HTML Title           | responseHtmlTitle            | String                       
+|Response Total Bytes          | encodedResponseTotalBytes    | String(OperatorAndNumeric)   
+|NetworkDelay                  | encodedNetworkDelayTime      | String(OperatorAndNumeric)   
+|Sniffer                       | snifferID                    | String                       
+|Server IP                     | serverIP                     | String                       
+|SOAP Adapter                  | soapAdapterPath              | String                       
+|SOAP Operation                | soapOperationName            | String                       
+|SOAP Web Service              | soapWebServiceName           | String                       
+|Subnet                        | subnet                       | String                       
