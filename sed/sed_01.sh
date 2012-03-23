@@ -75,7 +75,8 @@ param1="Hello world"
 echo "Hello world" | sed -n 's/'"$param1"'/& &/p'
 # Using sed in a shell here-is document
 echo -n 'what is the value?'
-read value
+#read value
+value=3
 sed 's/XXX/'$value'/' <<EOF
 The value is XXX
 EOF
@@ -97,3 +98,8 @@ sed '3,$ s/a/A/g' < restriction1.txt
 sed '3,$ s/a/A/g' restriction1.txt pattern_test.txt
 cat restriction1.txt pattern_test.txt | sed '3,$ s/a/A/g'
 echo "######## Ranges by patterns########"
+sed '/start/,/stop/ s/#.*//' < restriction2.txt
+sed '1,/start/ s/#.*//' < restriction2.txt
+sed -e '1,/start/ s/#.*//' -e '/stop/,$ s/#.*//' < restriction2.txt
+###################################
+echo "######## Delete with d########"

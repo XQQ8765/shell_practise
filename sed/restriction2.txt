@@ -1,0 +1,13 @@
+---The first line in restriction2.txt---
+A line before START 
+#A comment before START
+#start
+start
+A line between START and STOP
+#A comment line between START and STOP
+The second line between START and STOP
+#stop
+stop
+A line after STOP
+#A comment after STOP 
+---The last line in restriction2.txt---
