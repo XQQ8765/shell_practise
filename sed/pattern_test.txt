@@ -1,0 +1,6 @@
+line 1
+pattern
+line 2
+The second pattern
+line 3
+The third pattern after line 3
