@@ -103,3 +103,27 @@ sed '1,/start/ s/#.*//' < restriction2.txt
 sed -e '1,/start/ s/#.*//' -e '/stop/,$ s/#.*//' < restriction2.txt
 ###################################
 echo "######## Delete with d########"
+sed '3,$ d' < restriction2.txt
+sed '1,/^$/ d' < restriction2.txt
+echo "----------sed tail----------"
+./sed_tail.sh restriction2.txt
+echo "----------Delete all the lines that start with a \"#\"----------"
+sed '/^#/ d' < restriction2.txt
+echo "----------Delete comments and blank lines----------"
+sed -e '/^#/ d' -e '/^$/ d' < restriction2.txt
+echo "----------Delete comments and blank lines and tabs immediately before the end of line----------"
+sed -e '/^#/ d' -e '/^$/ d' -e 's/[ ^I]*$//'  < restriction2.txt
+###################################
+echo "######## Printing with p########"
+echo "----------Double every empty line----------"
+sed '/^$/ p' < restriction2.txt
+echo "----------head 10 lines----------"
+sed -n '1,10 p' < restriction2.txt
+echo "----------sed like grep----------"
+sed -n '/start/ p' < restriction2.txt
+###################################
+echo "######## Reversing the restriction with !########"
+sed -n '/start/ !p' < restriction2.txt
+###################################
+echo "######## The q or quit command########"
+
