@@ -1,0 +1,4 @@
+Test first file
+#INCLUDE <f1>
+Test second file
+#INCLUDE <f2>

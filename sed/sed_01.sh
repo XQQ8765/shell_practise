@@ -126,4 +126,43 @@ echo "######## Reversing the restriction with !########"
 sed -n '/start/ !p' < restriction2.txt
 ###################################
 echo "######## The q or quit command########"
+###################################
+echo "######## Grouping with { and }########"
+echo "---remove all the comment and empty lines between /start/, /stop/ in file restriction2.txt---"
+sed -n '
+	/start/, /stop/ {
+		s/#.*//
+		/^$/ d
+		p
+	}
+' < restriction2.txt
+echo "---remove all the comment and empty lines between /start/, /stop/ in the first 10 lines of file restriction2.txt---"
+sed -n '1, 10 {
+		/start/, /stop/ {
+			s/#.*//
+			/^$/ d
+			p
+		}
+	}
+' < restriction2.txt
+###################################
+echo "######## Writing a file with the 'w' command########"
+sed -n 's/^[0-9]*[02468] /&/w even' < t0.txt | cat even
+###################################
+echo "######## Reading in a file with the 'r' command########"
+echo "---append the file \"t0.txt\" at the end of file \"restriction2.txt\"---"
+sed '$r t0.txt' < restriction2.txt
+echo "---append the file \"t0.txt\" after the line which matches /start/ in file \"restriction2.txt\"---"
+sed '/start/ r t0.txt' < restriction2.txt
+echo "---delete the matched line and append the file \"t0.txt\" after the line which matches /start/ in file \"restriction2.txt\"---"
+sed '/start/ {
+	r t0.txt
+	d
+}' < restriction2.txt
+echo '---include the specified file f1---'
+./sed_include1.sh f1 < include1.txt
+echo '---include the specified file f2---'
+./sed_include1.sh f2 < include1.txt
+###################################
+echo "######## SunOS and the # Comment Command########"
 
