@@ -1,15 +1,16 @@
 ---The first line in restriction2.txt---
-A line before START 
-The second line before START
-
-#A comment before START
+A line before START ONE
+TWO The second line before START
+A line contains ONE TWO THREE
+#A comment before START#
 #start
 start
 A line between START and STOP
 #A comment line between START and STOP
-The second line between START and STOP # Comment
+The second line between START and STOP # Comment#
 #stop
 stop
-	A line after STOP		
+	A line after STOP ONE
+The second line after STOP TWO
 #A comment after STOP 
 ---The last line in restriction2.txt---

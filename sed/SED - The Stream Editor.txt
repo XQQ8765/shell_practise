@@ -1130,7 +1130,7 @@ I could have used an example that converted all 26 letters into upper case, and 
 If you wanted to convert a line that contained a hexadecimal number (e.g. 0x1aff) to upper case (0x1AFF), you could use: 
 
 
-sed '/0x[0-9a-zA-Z]*/ y/abcdef/ABCDEF' file
+sed '/0x[0-9a-zA-Z]*/ y/abcdef/ABCDEF/' file
 This works fine if there are only numbers in the file. If you wanted to change the second word in a line to upper case, you are out of luck - unless you use multi-line editing. (Hey - I think there is some sort of theme here!) 
 
 

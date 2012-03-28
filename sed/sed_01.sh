@@ -165,4 +165,113 @@ echo '---include the specified file f2---'
 ./sed_include1.sh f2 < include1.txt
 ###################################
 echo "######## SunOS and the # Comment Command########"
+###################################
+echo "######## Adding, Changing, Inserting new lines########"
+echo "######## Append a line with \'a\'########"
+sed '/start/ a\
+Add this line after every line with start' < restriction2.txt
+echo "######## Insert a line with \'i\'########"
+sed '/start/ i\
+Add this line before every line with start' < restriction2.txt
+echo "######## Change a line with \'c\'########"
+sed '/start/ c\
+Replace the current line with the line' < restriction2.txt
+echo "---Combine \'a\',\'i\',\'c\' together---"
+sed '
+/start/ {
+i\
+Add the line before /start/
+a\
+Add the line after /start/
+c\
+Change the line to this one 
+}' < restriction2.txt
+###################################
+echo "######## Leading tabs and spaces in a sed script########"
+sed '/start/ a\
+	Add this line after every line with start' < restriction2.txt
+echo "---This line is the same as the above line in ubuntu---"
+sed '/start/ a\
+\	Add this line after every line with start' < restriction2.txt
+###################################
+echo "######## Address ranges and the above commands########"
+sed '
+/start/, /stop/ c\
+***DELETED***
+' < restriction2.txt
+echo "---add a blank line after every line---"
+sed '1,$ {
+a\
 
+}' < restriction2.txt
+###################################
+echo "######## Multi-Line Patterns########"
+echo "--- Print line number with =---"
+sed -n '/start/ =' restriction2.txt
+echo "--- Print the number of lines with a file=---"
+sed -n '$=' restriction2.txt
+echo "--- Print the line number of lines which are between /start/ and /stop/---"
+sed -n '/start/, /stop/ {
+=
+d
+}' restriction2.txt
+echo "######## Transform with y########"
+sed 'y/abcdef/ABCDEF/' restriction2.txt
+echo "0x9b8d 0x9b9d" | sed '/0x[0-9a-zA-Z]*/ y/abcdef/ABCDEF/'
+echo "######## Working with Multiple Lines########"
+echo "---search for a line that ended with \'#\' and append the next line to it---"
+sed '
+/#$/ {
+	N
+	s/#\n//
+}
+' restriction2.txt
+echo "---search for two lines containing \'ONE\' and \'TWO\'---"
+sed -n '
+/ONE/ {
+	N
+	/\n.*TWO/ p 
+}
+' restriction2.txt
+echo "---delete everything between /ONE/ and /TWO/---"
+sed '
+/ONE/ {
+	N
+	/\n.*TWO/ {
+		s/ONE.*\n.*TWO/ONE TWO/
+	}
+}' restriction2.txt
+echo "---search for a particular pattern on two consecutive lines---"
+sed '
+/ONE/ {
+	N
+	s/ONE TWO/TWO/
+	s/ONE\nTWO/TWO/
+}' restriction2.txt
+echo "---use the \'D\' command to delete the first line if we find a line containing \'TWO\' immediately after a line containing \'ONE\'---"
+sed '
+/ONE/ {
+	N
+	/\n.*TWO/ D
+}' restriction2.txt
+echo "---print the first line, and not print every other line if we find a line containing \'TWO\' immediately after a line containing \'ONE\'---"
+sed -n '
+/ONE/ {
+	N
+	/\n.*TWO/ P 
+}' restriction2.txt
+echo "---Delete everything between \'ONE\' and \'TWO\' if they are on one or two consecutive lines---"
+sed '
+/ONE/ {
+	N
+	/ONE.*TWO/ {
+		s/ONE.*TWO/ONE TWO/
+		P
+		D	
+	}
+}' restriction2.txt
+echo "---add line numbers to a file by merging two lines"
+sed '=' restriction2.txt | sed '{
+	N
+	s/\n/ /
+}'
