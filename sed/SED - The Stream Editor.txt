@@ -1288,7 +1288,7 @@ table2
 and the first line will be converted into upper case. I will use tr to convert the space into a new line: 
 
 #!/bin/sh
-tr ' ' '\012' file| 
+tr ' ' '\012' < file| 
 sed ' {
 	y/abcdef/ABCDEF/
 	N

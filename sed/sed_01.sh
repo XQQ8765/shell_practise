@@ -275,3 +275,27 @@ sed '=' restriction2.txt | sed '{
 	N
 	s/\n/ /
 }'
+echo "---Break one line into two lines, edit them, and merge them together---"
+tr ' ' '\012' < sed_split.txt |
+sed '{
+	y/abcdef/ABCDEF/
+	N
+	s/\n/ /
+}'
+echo "---use sed instead of tr---"
+sed 's/ /\n/' sed_split.txt | sed '{
+	y/abcdef/ABCDEF/
+	N
+	s/\n/ /
+}'
+###################################
+echo "######## Using newlines in sed scripts########"
+(echo a;echo x;echo y) | sed '/x$/ {
+N
+s:x\n:x:
+}'
+echo "---don\'t use \"\n\" - instead insert a literal new line character---"
+(echo a;echo x;echo y) | sed 's:x:X\
+:'
+###################################
+echo "######## Exchange with x########"
