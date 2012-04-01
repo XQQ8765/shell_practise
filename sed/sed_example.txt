@@ -1,0 +1,8 @@
+通过几个例子看sed的模式空间与保持空间
+http://www.cnblogs.com/binary/archive/2005/04/01/130544.html
+
+SED 教程
+http://hi.baidu.com/apparitor/blog/item/f50fa90fc8eee9df7bcbe106.html
+
+sed 学习二
+http://huangyu.blog.51cto.com/1021686/803526
