@@ -298,4 +298,6 @@ echo "---don\'t use \"\n\" - instead insert a literal new line character---"
 (echo a;echo x;echo y) | sed 's:x:X\
 :'
 ###################################
-echo "######## Exchange with x########"
+echo "######## Exchange with x ########"
+sed 'x' f1
+echo "---Example of Context Grep---"
